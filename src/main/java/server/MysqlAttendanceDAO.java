@@ -22,7 +22,7 @@ public class MysqlAttendanceDAO implements InterfaceAttendanceDAO {
 	}
 
 	@Override
-	public UUID insertAttendance(UUID courseUUID, Date time, List<UUID> attendees) {
+	public UUID insertAttendance(UUID courseUUID, Date time, List<UUID> attendees) throws WrongInputException {
 		String SQLtime = sdf.format(time);
 		UUID uuid = UUID.randomUUID();
 		String CUUIDForMysql = ("'" + courseUUID.toString() + "'");
@@ -78,7 +78,7 @@ public class MysqlAttendanceDAO implements InterfaceAttendanceDAO {
 	}
 
 	@Override
-	public List<String> findAttendees(UUID uuid) {
+	public List<String> findAttendees(UUID uuid) throws WrongInputException {
 		List<String> students = new ArrayList<>();
 		String UUIDForMysql = ("'" + uuid.toString() + "'");
 		int attendanceNumber = jdbcTemplate.queryForObject(SQLQueries.NUMBER_OF_ATTENDANCIES + UUIDForMysql, Integer.class);
@@ -89,7 +89,6 @@ public class MysqlAttendanceDAO implements InterfaceAttendanceDAO {
 		return jdbcTemplate.query(SQLQueries.SELECT_NAMES_OF_ATTENDEES + UUIDForMysql,
 				new ResultSetExtractor<List<String>>() {
 					public List<String> extractData(ResultSet rs) throws SQLException, DataAccessException {
-						Attendance attendance = null;
 						while (rs.next()) {
 							String name = rs.getString("ucastnik.meno");
 							String surname = rs.getString("ucastnik.priezvisko");
@@ -101,7 +100,7 @@ public class MysqlAttendanceDAO implements InterfaceAttendanceDAO {
 	}
 
 	@Override
-	public List<Attendance> attendancesOfAttendee(UUID uuid) {
+	public List<Attendance> attendancesOfAttendee(UUID uuid) throws WrongInputException {
 		List<Attendance> attendances = new ArrayList<>();
 		String UUIDForMysql = ("'" + uuid.toString() + "'");
 		int studentNumber = jdbcTemplate.queryForObject(SQLQueries.NUMBER_OF_ATTENDANDS + UUIDForMysql, Integer.class);

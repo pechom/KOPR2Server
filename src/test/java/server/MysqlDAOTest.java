@@ -100,7 +100,7 @@ public class MysqlDAOTest {
 	}
 
 	@Test
-	public void testInsertAttendance() {
+	public void testInsertAttendance() throws WrongInputException {
 		System.out.println("insertAttendance");
 		UUID courseUUID = courseDAO.insertCourse("KOPR");
 		List<UUID> students = new ArrayList<>();
@@ -120,7 +120,7 @@ public class MysqlDAOTest {
 	}
 
 	@Test(expected = NullPointerException.class)
-	public void testDeleteAttendance() {
+	public void testDeleteAttendance() throws WrongInputException {
 		System.out.println("deleteAttendance");
 		UUID courseUUID = courseDAO.insertCourse("KOPR");
 		List<UUID> students = new ArrayList<>();
@@ -139,7 +139,7 @@ public class MysqlDAOTest {
 	}
 
 	@Test
-	public void testFindAttendance() {
+	public void testFindAttendance() throws WrongInputException {
 		System.out.println("findAttendance");
 		UUID courseUUID = courseDAO.insertCourse("KOPR");
 		List<UUID> students = new ArrayList<>();
@@ -159,7 +159,7 @@ public class MysqlDAOTest {
 	}
 
 	@Test
-	public void testFindAttendees() {
+	public void testFindAttendees() throws WrongInputException {
 		System.out.println("findAttendees");
 		UUID courseUUID = courseDAO.insertCourse("KOPR");
 		List<UUID> students = new ArrayList<>();
@@ -181,7 +181,7 @@ public class MysqlDAOTest {
 	}
 
 	@Test
-	public void testFindAttendancesOfAttendee() {
+	public void testFindAttendancesOfAttendee() throws WrongInputException {
 		System.out.println("AttendancesOfAttendee");
 		UUID suuid = studentDAO.insertStudent("Dragonslayer", "Ornstein");
 		UUID courseUUID = courseDAO.insertCourse("KAPR");

@@ -68,7 +68,7 @@ public class AJSServiceTest {
 	}
 
 	@Test
-	public void testInsertAttendance() {
+	public void testInsertAttendance() throws WrongInputException {
 		System.out.println("insertAttendance");
 		UUID courseUUID = ajsService.insertCourse("KOPR");
 		List<UUID> students = new ArrayList<>();
@@ -88,7 +88,7 @@ public class AJSServiceTest {
 	}
 
 	@Test
-	public void testFindAttendees() {
+	public void testFindAttendees() throws WrongInputException {
 		System.out.println("findAttendees");
 		UUID courseUUID = ajsService.insertCourse("KOPR");
 		List<UUID> students = new ArrayList<>();
@@ -110,7 +110,7 @@ public class AJSServiceTest {
 	}
 
 	@Test
-	public void testFindAttendancesOfAttendee() {
+	public void testFindAttendancesOfAttendee() throws WrongInputException {
 		System.out.println("AttendancesOfAttendee");
 		UUID suuid = ajsService.insertStudent("Dragonslayer", "Ornstein");
 		UUID courseUUID = ajsService.insertCourse("KAPR");
@@ -131,7 +131,7 @@ public class AJSServiceTest {
 	}
 
 	@Test(expected = WrongInputException.class)
-	public void testInsertAttendanceFailedCourse() {
+	public void testInsertAttendanceFailedCourse() throws WrongInputException {
 		System.out.println("insertFailedCourseAttendance");
 		List<UUID> students = new ArrayList<>();
 		UUID suuid = ajsService.insertStudent("Artorias", "Abysswalker");
@@ -148,7 +148,7 @@ public class AJSServiceTest {
 	}
 
 	@Test(expected = WrongInputException.class)
-	public void testInsertAttendanceFailedStudent() {
+	public void testInsertAttendanceFailedStudent() throws WrongInputException {
 		System.out.println("insertFailedStudentAttendance");
 		UUID courseUUID = ajsService.insertCourse("KAPR");
 		List<UUID> students = new ArrayList<>();
@@ -165,7 +165,7 @@ public class AJSServiceTest {
 	}
 
 	@Test(expected = WrongInputException.class)
-	public void testInsertAttendanceFailedBoth() {
+	public void testInsertAttendanceFailedBoth() throws WrongInputException {
 		System.out.println("insertFailedBothAttendance");
 		List<UUID> students = new ArrayList<>();
 		students.add(UUID.fromString("21f87078-0b25-11e8-b159-086266b31825"));
@@ -177,14 +177,14 @@ public class AJSServiceTest {
 	}
 
 	@Test(expected = WrongInputException.class)
-	public void testFindAttendeesFailed() {
+	public void testFindAttendeesFailed() throws WrongInputException {
 		System.out.println("failedFindFAttendees");
 		UUID auuid = UUID.fromString("291dea46-0b28-11e8-b159-086266b31825");
 		ajsService.findAttendees(auuid);
 	}
 
 	@Test(expected = WrongInputException.class)
-	public void testFindAttendancesOfAttendeeFailed() {
+	public void testFindAttendancesOfAttendeeFailed() throws WrongInputException {
 		System.out.println("AttendancesOfAttendeeFailed");
 		UUID suuid = UUID.fromString("291dea46-0b28-11e8-b159-086266b31825");
 		ajsService.attendancesOfAttendee(suuid);

@@ -30,19 +30,19 @@ public class DefaultAJSService implements AJSService {
 	@Override
 	@WebMethod
 	public UUID insertAttendance(@WebParam(name = "courseUUID") UUID courseUUID, @WebParam(name = "time") Date time,
-			@WebParam(name = "attendees") List<UUID> attendees) {
+			@WebParam(name = "attendees") List<UUID> attendees) throws WrongInputException {
 		return attendanceDAO.insertAttendance(courseUUID, time, attendees);
 	}
 
 	@Override
 	@WebMethod
-	public List<String> findAttendees(@WebParam(name = "nuuid") UUID uuid) {
+	public List<String> findAttendees(@WebParam(name = "uuid") UUID uuid) throws WrongInputException{
 		return attendanceDAO.findAttendees(uuid);
 	}
 
 	@Override
 	@WebMethod
-	public List<Attendance> attendancesOfAttendee(@WebParam(name = "uuid") UUID uuid) {
+	public List<Attendance> attendancesOfAttendee(@WebParam(name = "uuid") UUID uuid) throws WrongInputException{
 		return attendanceDAO.attendancesOfAttendee(uuid);
 	}
 

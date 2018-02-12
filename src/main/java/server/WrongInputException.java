@@ -1,6 +1,9 @@
 package server;
 
-public class WrongInputException extends RuntimeException{
+import javax.xml.ws.WebFault;
+
+@WebFault(name="WrongInputException")
+public class WrongInputException extends Exception{
 
 	public WrongInputException (String cause) {
 		super (cause);
