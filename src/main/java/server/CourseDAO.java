@@ -1,7 +1,7 @@
 package server;
 import java.util.UUID;
 
-public interface InterfaceCourseDAO {
+public interface CourseDAO {
 
 	UUID insertCourse(String name);
 

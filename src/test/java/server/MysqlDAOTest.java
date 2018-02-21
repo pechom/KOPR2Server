@@ -19,9 +19,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class MysqlDAOTest {
 
-	private InterfaceStudentDAO studentDAO;
-	private InterfaceCourseDAO courseDAO;
-	private InterfaceAttendanceDAO attendanceDAO;
+	private StudentDAO studentDAO;
+	private CourseDAO courseDAO;
+	private AttendanceDAO attendanceDAO;
 	private JdbcTemplate jdbcTemplate;
 
 	@BeforeClass

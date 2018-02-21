@@ -3,7 +3,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public interface InterfaceAttendanceDAO {
+public interface AttendanceDAO {
 
 	UUID insertAttendance(UUID courseUUID, Date time, List<UUID> attendees) throws WrongInputException;
 

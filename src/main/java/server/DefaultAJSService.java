@@ -11,9 +11,9 @@ import javax.jws.WebService;
 @WebService(serviceName = "AJSService")
 public class DefaultAJSService implements AJSService {
 
-	private InterfaceStudentDAO studentDAO = ObjectFactory.INSTANCE.getStudentDAO();
-	private InterfaceCourseDAO courseDAO = ObjectFactory.INSTANCE.getCourseDAO();
-	private InterfaceAttendanceDAO attendanceDAO = ObjectFactory.INSTANCE.getAttendanceDAO();
+	private StudentDAO studentDAO = ObjectFactory.INSTANCE.getStudentDAO();
+	private CourseDAO courseDAO = ObjectFactory.INSTANCE.getCourseDAO();
+	private AttendanceDAO attendanceDAO = ObjectFactory.INSTANCE.getAttendanceDAO();
 
 	@Override
 	@WebMethod

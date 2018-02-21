@@ -12,7 +12,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
-public class MysqlAttendanceDAO implements InterfaceAttendanceDAO {
+public class MysqlAttendanceDAO implements AttendanceDAO {
 
 	private java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private JdbcTemplate jdbcTemplate;

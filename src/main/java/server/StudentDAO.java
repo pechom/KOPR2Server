@@ -1,7 +1,7 @@
 package server;
 import java.util.UUID;
 
-public interface InterfaceStudentDAO {
+public interface StudentDAO {
 
 	UUID insertStudent(String name, String surname);
 

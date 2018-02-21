@@ -7,9 +7,9 @@ public enum ObjectFactory {
 
 	INSTANCE;
 
-	private InterfaceStudentDAO studentDAO;
-	private InterfaceCourseDAO courseDAO;
-	private InterfaceAttendanceDAO attendanceDAO;
+	private StudentDAO studentDAO;
+	private CourseDAO courseDAO;
+	private AttendanceDAO attendanceDAO;
 	private JdbcTemplate jdbcTemplate;
 	private AJSService ajsService;
 
@@ -20,7 +20,6 @@ public enum ObjectFactory {
 		dataSource.setUser("root");
 		dataSource.setPassword("yareyare");
 		jdbcTemplate = new JdbcTemplate(dataSource);
-
 		studentDAO = new MysqlStudentDAO(jdbcTemplate);
 		courseDAO = new MysqlCourseDAO(jdbcTemplate);
 		attendanceDAO = new MysqlAttendanceDAO(jdbcTemplate);
@@ -40,21 +39,21 @@ public enum ObjectFactory {
 		}
 	}
 
-	public InterfaceStudentDAO getStudentDAO() {
+	public StudentDAO getStudentDAO() {
 		if (studentDAO == null) {
 			studentDAO = new MysqlStudentDAO(jdbcTemplate);
 		}
 		return studentDAO;
 	}
 
-	public InterfaceCourseDAO getCourseDAO() {
+	public CourseDAO getCourseDAO() {
 		if (courseDAO == null) {
 			courseDAO = new MysqlCourseDAO(jdbcTemplate);
 		}
 		return courseDAO;
 	}
 
-	public InterfaceAttendanceDAO getAttendanceDAO() {
+	public AttendanceDAO getAttendanceDAO() {
 		if (attendanceDAO == null) {
 			attendanceDAO = new MysqlAttendanceDAO(jdbcTemplate);
 		}
